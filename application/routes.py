@@ -1,5 +1,5 @@
 from flask import render_template,redirect,url_for, request, Response
-from application.models import Animals, animalsdict
+from application.models import  animalsdict
 from application.forms import AnimalForms
 import random
 import requests
@@ -25,4 +25,4 @@ def submit(key):
     elif random == "6":
         return list(animalsdict.keys())[5]
     return redirect(url_for('index'))
-return render_template('index.html')
+    return render_template('index.html')
