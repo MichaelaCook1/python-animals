@@ -11,6 +11,11 @@ pipeline {
                 //
             }
         }
+	stage('Push') {
+	    steps {
+	 	 //
+	    }
+	}
         stage('Deploy') {
             steps {
                 //
