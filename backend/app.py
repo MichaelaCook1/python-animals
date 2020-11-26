@@ -4,7 +4,7 @@ import random
 app = Flask(__name__)
 
 @app.route('/animal', methods=['GET'])
-def animals():
+def animal():
     animals = ["Lion", "Dog", "Cat", "Cow", "Pig", "Snake"]
     return Response(random.choices(animals), mimetype="text/plain")
 

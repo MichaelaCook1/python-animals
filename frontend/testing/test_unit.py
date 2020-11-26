@@ -8,7 +8,7 @@ class TestBase(TestCase):
     def create_app(self):
         return app
 
-class TestRespomse(TestBase):
+class TestResponse(TestBase):
     def test_animal_on_page(self):
         with patch("requests.get") as g:
             with patch("requests.post") as p:
