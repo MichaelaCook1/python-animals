@@ -8,12 +8,24 @@ class TestBase(TestCase):
     def create_app(self):
         return app
 
-class TestResponse(TestBase):
-    def test_animal_on_page(self):
-        with patch("requests.get") as g:
-            with patch("requests.post") as p:
-                g.return_value.text = "Lion"
-                p.return_value.text = "ROAR"
+class TestAnimals(TestBase):
+    def test_animal(self):
+        animals = ["Lion", "Dog", "Cat", "Cow", "Pig", "Snake"]
+        response = self.client.get(url_for('animal'))
+        self.assertIn(response.data, animals)
 
-                response = self.client.get(url_for("index"))
-                self.assertIn(b.'Lion roars',response.data)
+    def test_noise_lion(self):
+        response = self.client.post(
+                url_for('noise'),
+                data='Lion',
+                follow_redirect=True
+                )
+        self.assertIn(b'ROAR', response.data)
+
+    def test_noise_dog(self):
+        response = self.client.post(
+                url_for('noise'),
+                data='Dog',
+                follow_redirect=True
+                )
+        self.assertIn(b'WOOF', response.data)

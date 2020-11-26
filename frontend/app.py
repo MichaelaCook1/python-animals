@@ -7,12 +7,12 @@ app= Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
     #gets an animal
-    animal = requests.get("localhost:5001/animal")
+    animal = requests.get("http://backend:5001/animal")
     #gets the noise
-    noise = requests.post("localhost:5001/noise", data=animal.text)
+    noise = requests.post("http://backend:5001/noise", data=animal.text)
 
 
-    return render_template('index.html', animals=animal.text, noise=noise.text)
+    return render_template('index.html', animal=animal.text, noise=noise.text)
 
 
 

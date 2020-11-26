@@ -1,18 +1,16 @@
 version: '3.7'
 
 services: 
-  service1:
-    image: michaelacook1/python-animals1/.
-    build: ./frontend
-    deploy:
-      replicas: 3
+  frontend:
+    image: michaelacook1/frontend:fe
+    build: ./frontend/.
     ports:
     - target: 5000
       published: 5000
       protocol: tcp
-  service2:
-    image: michaelacook1/python-animals2/.
-    build: ./backend
+  backend:
+    image: michaelacook1/backend:be
+    build: ./backend/.
     ports:
     - target: 5001
       protocol: tcp
